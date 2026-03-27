@@ -3,305 +3,340 @@
 #include <windows.h>
 using namespace std;
 
-//Класс Point 
-class Point {
+// РљР»Р°СЃСЃ Point
+class Point
+{
 private:
     int x;
     int y;
 
 public:
-    // Конструктор без параметров
-    Point() {
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ
+    Point()
+    {
         x = 0;
         y = 0;
-        cout << "Конструктор без параметров вызван" << endl;
+        cout << "РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ РІС‹Р·РІР°РЅ" << endl;
     }
-    
-    // Конструктор с параметрами
-    Point(int x1, int y2) {
+
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
+    Point(int x1, int y2)
+    {
         x = x1;
         y = y2;
-        cout << "Конструктор с параметрами вызван: (" << x << ", " << y << ")" << endl;
+        cout << "РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РІС‹Р·РІР°РЅ: (" << x << ", " << y << ")" << endl;
     }
-    
-    // Конструктор копирования
-    Point(const Point& other) {
+
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+    Point(const Point &other)
+    {
         x = other.x;
         y = other.y;
-        cout << "Конструктор копирования вызван: (" << x << ", " << y << ")" << endl;
+        cout << "РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РІС‹Р·РІР°РЅ: (" << x << ", " << y << ")" << endl;
     }
-    
-    // Деструктор
-    ~Point() {
-        cout << "Деструктор вызван для точки (" << x << ", " << y << ")" << endl;
+
+    // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
+    ~Point()
+    {
+        cout << "Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РІС‹Р·РІР°РЅ РґР»СЏ С‚РѕС‡РєРё (" << x << ", " << y << ")" << endl;
     }
-    
-    // Методы доступа
-    void setX(int x1) {
+
+    // РњРµС‚РѕРґС‹ РґРѕСЃС‚СѓРїР°
+    void setX(int x1)
+    {
         x = x1;
-        cout << "Установлен x = " << x << endl;
+        cout << "РЈСЃС‚Р°РЅРѕРІР»РµРЅ x = " << x << endl;
     }
-    
-    void setY(int y2) {
+
+    void setY(int y2)
+    {
         y = y2;
-        cout << "Установлен y = " << y << endl;
+        cout << "РЈСЃС‚Р°РЅРѕРІР»РµРЅ y = " << y << endl;
     }
-    
+
     int getX() const { return x; }
     int getY() const { return y; }
-    
-    // Метод для вывода информации
-    void print() const {
-        cout << "Точка: (" << x << ", " << y << ")" << endl;
+
+    // РњРµС‚РѕРґ РґР»СЏ РІС‹РІРѕРґР° РёРЅС„РѕСЂРјР°С†РёРё
+    void print() const
+    {
+        cout << "РўРѕС‡РєР°: (" << x << ", " << y << ")" << endl;
     }
-    
-   
 };
 
-//Класс ColoredPoint (Наследник)
-class ColoredPoint : public Point {
+// РљР»Р°СЃСЃ ColoredPoint (РќР°СЃР»РµРґРЅРёРє)
+class ColoredPoint : public Point
+{
 private:
     string color;
 
 public:
-    // Конструктор без параметров
-    ColoredPoint() : Point() {
-        color = "черный";
-        cout << "Конструктор без параметров вызван, цвет: " << color << endl;
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ
+    ColoredPoint() : Point()
+    {
+        color = "С‡РµСЂРЅС‹Р№";
+        cout << "РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ РІС‹Р·РІР°РЅ, С†РІРµС‚: " << color << endl;
     }
-    
-    // Конструктор с параметрами
-    ColoredPoint(int x, int y, string col) : Point(x, y) {
-        color = col;
-        cout << "Конструктор с параметрами вызван, цвет: " << color << endl;
-    }
-    
-    // Конструктор копирования
-    ColoredPoint(const ColoredPoint& other) : Point(other) {
-        color = other.color;
-        cout << "Конструктор копирования вызван, цвет: " << color << endl;
-    }
-    
-    // Деструктор
-    ~ColoredPoint() {
-        cout << "Деструктор вызван для точки цвета " << color << endl;
-    }
-    
-    // Метод для установки цвета
-    void setColor(string col) {
-        color = col;
-        cout << "Установлен цвет: " << color << endl;
-    }
-    
-    string getColor() const { 
-        return color; 
-    }
-    
-    // Переопределение метода print
-    void print() const {
-        cout << "Цветная точка: (" << getX() << ", " << getY() << ") цвет: " << color << endl;
-    }
-    
 
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
+    ColoredPoint(int x, int y, string col) : Point(x, y)
+    {
+        color = col;
+        cout << "РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РІС‹Р·РІР°РЅ, С†РІРµС‚: " << color << endl;
+    }
+
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+    ColoredPoint(const ColoredPoint &other) : Point(other)
+    {
+        color = other.color;
+        cout << "РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РІС‹Р·РІР°РЅ, С†РІРµС‚: " << color << endl;
+    }
+
+    // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
+    ~ColoredPoint()
+    {
+        cout << "Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РІС‹Р·РІР°РЅ РґР»СЏ С‚РѕС‡РєРё С†РІРµС‚Р° " << color << endl;
+    }
+
+    // РњРµС‚РѕРґ РґР»СЏ СѓСЃС‚Р°РЅРѕРІРєРё С†РІРµС‚Р°
+    void setColor(string col)
+    {
+        color = col;
+        cout << "РЈСЃС‚Р°РЅРѕРІР»РµРЅ С†РІРµС‚: " << color << endl;
+    }
+
+    string getColor() const
+    {
+        return color;
+    }
+
+    // РџРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёРµ РјРµС‚РѕРґР° print
+    void print() const
+    {
+        cout << "Р¦РІРµС‚РЅР°СЏ С‚РѕС‡РєР°: (" << getX() << ", " << getY() << ") С†РІРµС‚: " << color << endl;
+    }
 };
 
-// Класс для демонстрации композиции 
-class Line {
+// РљР»Р°СЃСЃ РґР»СЏ РґРµРјРѕРЅСЃС‚СЂР°С†РёРё РєРѕРјРїРѕР·РёС†РёРё
+class Line
+{
 private:
-    Point start;      // Объект класса Point 
-    Point* end;       // Указатель на объект класса Point
-    
+    Point start; // РћР±СЉРµРєС‚ РєР»Р°СЃСЃР° Point
+    Point *end;  // РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Point
+
 public:
-    // Конструктор с параметрами (использует список инициализации)
-    Line(int x1, int y1, int x2, int y2) : start(x1, y1) {
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё (РёСЃРїРѕР»СЊР·СѓРµС‚ СЃРїРёСЃРѕРє РёРЅРёС†РёР°Р»РёР·Р°С†РёРё)
+    Line(int x1, int y1, int x2, int y2) : start(x1, y1)
+    {
         end = new Point(x2, y2);
-        cout << "Конструктор с параметрами вызван" << endl;
+        cout << "РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РІС‹Р·РІР°РЅ" << endl;
     }
-    
-    // Конструктор копирования
-    Line(const Line& other) : start(other.start) {
+
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+    Line(const Line &other) : start(other.start)
+    {
         end = new Point(*(other.end));
-        cout << "Конструктор копирования вызван" << endl;
+        cout << "РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РІС‹Р·РІР°РЅ" << endl;
     }
-    
-    // Деструктор
-    ~Line() {
+
+    // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
+    ~Line()
+    {
         delete end;
-        cout << "Деструктор вызван" << endl;
+        cout << "Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РІС‹Р·РІР°РЅ" << endl;
     }
-    
-    void moveStart(int dx, int dy) {
+
+    void moveStart(int dx, int dy)
+    {
         start.setX(start.getX() + dx);
         start.setY(start.getY() + dy);
-        cout << "Начальная точка перемещена" << endl;
+        cout << "РќР°С‡Р°Р»СЊРЅР°СЏ С‚РѕС‡РєР° РїРµСЂРµРјРµС‰РµРЅР°" << endl;
     }
-    
-    void moveEnd(int dx, int dy) {
+
+    void moveEnd(int dx, int dy)
+    {
         end->setX(end->getX() + dx);
         end->setY(end->getY() + dy);
-        cout << "Конечная точка перемещена" << endl;
+        cout << "РљРѕРЅРµС‡РЅР°СЏ С‚РѕС‡РєР° РїРµСЂРµРјРµС‰РµРЅР°" << endl;
     }
 };
 
-//  Функции для демонстрации передачи объектов 
-void funcByValue(Point obj) {
-    cout << "Внутри funcByValue" << endl;
+//  Р¤СѓРЅРєС†РёРё РґР»СЏ РґРµРјРѕРЅСЃС‚СЂР°С†РёРё РїРµСЂРµРґР°С‡Рё РѕР±СЉРµРєС‚РѕРІ
+void funcByValue(Point obj)
+{
+    cout << "Р’РЅСѓС‚СЂРё funcByValue" << endl;
     obj.print();
-    cout << "Выход из funcByValue" << endl;
+    cout << "Р’С‹С…РѕРґ РёР· funcByValue" << endl;
 }
 
-void funcByPointer(Point* obj) {
-    cout << "Внутри funcByPointer" << endl;
+void funcByPointer(Point *obj)
+{
+    cout << "Р’РЅСѓС‚СЂРё funcByPointer" << endl;
     obj->print();
-    cout << "Выход из funcByPointer" << endl;
+    cout << "Р’С‹С…РѕРґ РёР· funcByPointer" << endl;
 }
 
-void funcByReference(Point& obj) {
-    cout << "Внутри funcByReference" << endl;
+void funcByReference(Point &obj)
+{
+    cout << "Р’РЅСѓС‚СЂРё funcByReference" << endl;
     obj.print();
-    cout << "Выход из funcByReference" << endl;
+    cout << "Р’С‹С…РѕРґ РёР· funcByReference" << endl;
 }
 
-//  Функции для возврата объектов 
-Point createStaticPoint() {
-    cout << "Внутри createStaticPoint" << endl;
+//  Р¤СѓРЅРєС†РёРё РґР»СЏ РІРѕР·РІСЂР°С‚Р° РѕР±СЉРµРєС‚РѕРІ
+Point createStaticPoint()
+{
+    cout << "Р’РЅСѓС‚СЂРё createStaticPoint" << endl;
     Point p(10, 20);
-    cout << "Возврат из createStaticPoint" << endl;
+    cout << "Р’РѕР·РІСЂР°С‚ РёР· createStaticPoint" << endl;
     return p;
 }
 
-Point* createDynamicPoint() {
-    cout << "Внутри createDynamicPoint" << endl;
-    Point* p = new Point(30, 40);
-    cout << "Возврат из createDynamicPoint" << endl;
+Point *createDynamicPoint()
+{
+    cout << "Р’РЅСѓС‚СЂРё createDynamicPoint" << endl;
+    Point *p = new Point(30, 40);
+    cout << "Р’РѕР·РІСЂР°С‚ РёР· createDynamicPoint" << endl;
     return p;
 }
 
-//  Главная функция
-int main() {
-    // Установка кодировки для русского языка в Windows
+//  Р“Р»Р°РІРЅР°СЏ С„СѓРЅРєС†РёСЏ
+int main()
+{
+    // РЈСЃС‚Р°РЅРѕРІРєР° РєРѕРґРёСЂРѕРІРєРё РґР»СЏ СЂСѓСЃСЃРєРѕРіРѕ СЏР·С‹РєР° РІ Windows
     SetConsoleOutputCP(1251);
     SetConsoleCP(1251);
 
-    cout << "1. Создание статических объектов" << endl;
-    Point p1;                    // Конструктор без параметров
-    Point p2(5, 7);              // Конструктор с параметрами
-    Point p3 = p2;               // Конструктор копирования
-    
-    cout << endl << "p1: ";
+    cout << "1. РЎРѕР·РґР°РЅРёРµ СЃС‚Р°С‚РёС‡РµСЃРєРёС… РѕР±СЉРµРєС‚РѕРІ" << endl;
+    Point p1;       // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ
+    Point p2(5, 7); // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
+    Point p3 = p2;  // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+
+    cout << endl
+         << "p1: ";
     p1.print();
     cout << "p2: ";
     p2.print();
-    cout << "p3 (копия p2): ";
+    cout << "p3 (РєРѕРїРёСЏ p2): ";
     p3.print();
     cout << endl;
-   
-    cout << "2. Создание динамических объектов" << endl;
-    Point* p4 = new Point();     // Динамическое создание
-    Point* p5 = new Point(15, 25);
-    
+
+    cout << "2. РЎРѕР·РґР°РЅРёРµ РґРёРЅР°РјРёС‡РµСЃРєРёС… РѕР±СЉРµРєС‚РѕРІ" << endl;
+    Point *p4 = new Point(); // Р”РёРЅР°РјРёС‡РµСЃРєРѕРµ СЃРѕР·РґР°РЅРёРµ
+    Point *p5 = new Point(15, 25);
+
     cout << "p4: ";
     p4->print();
     cout << "p5: ";
     p5->print();
-    
+
     delete p4;
     delete p5;
     cout << endl;
 
-    cout << "3. Работа с классами-наследниками" << endl;
-    ColoredPoint cp1;            
-    ColoredPoint cp2(10, 20, "красный");
+    cout << "3. Р Р°Р±РѕС‚Р° СЃ РєР»Р°СЃСЃР°РјРё-РЅР°СЃР»РµРґРЅРёРєР°РјРё" << endl;
+    ColoredPoint cp1;
+    ColoredPoint cp2(10, 20, "РєСЂР°СЃРЅС‹Р№");
     ColoredPoint cp3 = cp2;
-    
+
     cout << endl;
     cp1.print();
     cp2.print();
     cp3.print();
     cout << endl;
-    
-    cout << "4. Переопределение методов" << endl;
-    Point* basePtr = &cp2;       // Указатель на предка
-    ColoredPoint* derivedPtr = &cp2;
-    
-    cout << "Вызов print() через указатель на Point: ";
-    basePtr->print();            // Вызов метода Point
-    cout << "Вызов print() через указатель на ColoredPoint: ";
-    derivedPtr->print();         // Вызов переопределенного метода
+
+    cout << "4. РџРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёРµ РјРµС‚РѕРґРѕРІ" << endl;
+    Point *basePtr = &cp2; // РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РїСЂРµРґРєР°
+    ColoredPoint *derivedPtr = &cp2;
+
+    cout << "Р’С‹Р·РѕРІ print() С‡РµСЂРµР· СѓРєР°Р·Р°С‚РµР»СЊ РЅР° Point: ";
+    basePtr->print(); // Р’С‹Р·РѕРІ РјРµС‚РѕРґР° Point
+    cout << "Р’С‹Р·РѕРІ print() С‡РµСЂРµР· СѓРєР°Р·Р°С‚РµР»СЊ РЅР° ColoredPoint: ";
+    derivedPtr->print(); // Р’С‹Р·РѕРІ РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ РјРµС‚РѕРґР°
     cout << endl;
-    
-    //5. Композиция объектов
-    cout << "5. Композиция объектов" << endl;
+
+    // 5. РљРѕРјРїРѕР·РёС†РёСЏ РѕР±СЉРµРєС‚РѕРІ
+    cout << "5. РљРѕРјРїРѕР·РёС†РёСЏ РѕР±СЉРµРєС‚РѕРІ" << endl;
     Line line1(0, 0, 100, 100);
-    line1.moveStart(10, 10);;
+    line1.moveStart(10, 10);
+    ;
     cout << endl;
-    
-    //6. Присваивание и копирование
-    cout <<  "6. Присваивание объектов" << endl;
+
+    // 6. РџСЂРёСЃРІР°РёРІР°РЅРёРµ Рё РєРѕРїРёСЂРѕРІР°РЅРёРµ
+    cout << "6. РџСЂРёСЃРІР°РёРІР°РЅРёРµ РѕР±СЉРµРєС‚РѕРІ" << endl;
     Point pointA(1, 1);
     Point pointB(2, 2);
-    
-    cout << "До присваивания:" << endl;
-    cout << "pointA: "; pointA.print();
-    cout << "pointB: "; pointB.print();
-    
-    pointB = pointA;              // Присваивание
-    
-    cout << "После присваивания pointB = pointA:" << endl;
-    cout << "pointA: "; pointA.print();
-    cout << "pointB: "; pointB.print();
-    
-    pointA.setX(100);             // Изменяем pointA
-    cout << "После изменения pointA:" << endl;
-    cout << "pointA: "; pointA.print();
-    cout << "pointB: "; pointB.print();
-    cout << endl;
-    
 
-    cout << "7. Копирование указателей " << endl;
-    Point* ptrA = new Point(50, 60);
-    Point* ptrB = ptrA;           // Копирование указателя
-    
-    cout << "ptrA указывает на: "; ptrA->print();
-    cout << "ptrB указывает на: "; ptrB->print();
-    
+    cout << "Р”Рѕ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ:" << endl;
+    cout << "pointA: ";
+    pointA.print();
+    cout << "pointB: ";
+    pointB.print();
+
+    pointB = pointA; // РџСЂРёСЃРІР°РёРІР°РЅРёРµ
+
+    cout << "РџРѕСЃР»Рµ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ pointB = pointA:" << endl;
+    cout << "pointA: ";
+    pointA.print();
+    cout << "pointB: ";
+    pointB.print();
+
+    pointA.setX(100); // РР·РјРµРЅСЏРµРј pointA
+    cout << "РџРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ pointA:" << endl;
+    cout << "pointA: ";
+    pointA.print();
+    cout << "pointB: ";
+    pointB.print();
+    cout << endl;
+
+    cout << "7. РљРѕРїРёСЂРѕРІР°РЅРёРµ СѓРєР°Р·Р°С‚РµР»РµР№ " << endl;
+    Point *ptrA = new Point(50, 60);
+    Point *ptrB = ptrA; // РљРѕРїРёСЂРѕРІР°РЅРёРµ СѓРєР°Р·Р°С‚РµР»СЏ
+
+    cout << "ptrA СѓРєР°Р·С‹РІР°РµС‚ РЅР°: ";
+    ptrA->print();
+    cout << "ptrB СѓРєР°Р·С‹РІР°РµС‚ РЅР°: ";
+    ptrB->print();
+
     ptrA->setX(999);
-    cout << "После изменения через ptrA:" << endl;
-    cout << "ptrA указывает на: "; ptrA->print();
-    cout << "ptrB указывает на: "; ptrB->print();
-    
-    delete ptrA;                  // Удаляем один раз
+    cout << "РџРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ С‡РµСЂРµР· ptrA:" << endl;
+    cout << "ptrA СѓРєР°Р·С‹РІР°РµС‚ РЅР°: ";
+    ptrA->print();
+    cout << "ptrB СѓРєР°Р·С‹РІР°РµС‚ РЅР°: ";
+    ptrB->print();
+
+    delete ptrA; // РЈРґР°Р»СЏРµРј РѕРґРёРЅ СЂР°Р·
     ptrB = nullptr;
     cout << endl;
-    
 
-    cout << "8. Передача объектов в функции" << endl;
+    cout << "8. РџРµСЂРµРґР°С‡Р° РѕР±СЉРµРєС‚РѕРІ РІ С„СѓРЅРєС†РёРё" << endl;
     Point testPoint(100, 200);
-    
-    cout << "Вызов funcByValue:" << endl;
+
+    cout << "Р’С‹Р·РѕРІ funcByValue:" << endl;
     funcByValue(testPoint);
-    
-    cout << "Вызов funcByPointer:" << endl;
+
+    cout << "Р’С‹Р·РѕРІ funcByPointer:" << endl;
     funcByPointer(&testPoint);
-    
-    cout << "Вызов funcByReference:" << endl;
+
+    cout << "Р’С‹Р·РѕРІ funcByReference:" << endl;
     funcByReference(testPoint);
     cout << endl;
-    
-    cout << "9. Возврат объектов из функций" << endl;
-    
-    cout << "Получение статического объекта:" << endl;
+
+    cout << "9. Р’РѕР·РІСЂР°С‚ РѕР±СЉРµРєС‚РѕРІ РёР· С„СѓРЅРєС†РёР№" << endl;
+
+    cout << "РџРѕР»СѓС‡РµРЅРёРµ СЃС‚Р°С‚РёС‡РµСЃРєРѕРіРѕ РѕР±СЉРµРєС‚Р°:" << endl;
     Point returnedPoint = createStaticPoint();
     returnedPoint.print();
-    
-    cout << endl << "Получение динамического объекта:" << endl;
-    Point* dynamicPoint = createDynamicPoint();
+
+    cout << endl
+         << "РџРѕР»СѓС‡РµРЅРёРµ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РѕР±СЉРµРєС‚Р°:" << endl;
+    Point *dynamicPoint = createDynamicPoint();
     dynamicPoint->print();
     delete dynamicPoint;
     cout << endl;
 
-    cout << "10. Уничтожение объектов" << endl;
-    cout << "Статические объекты удаляются автоматически при выходе из main" << endl;
-    
+    cout << "10. РЈРЅРёС‡С‚РѕР¶РµРЅРёРµ РѕР±СЉРµРєС‚РѕРІ" << endl;
+    cout << "РЎС‚Р°С‚РёС‡РµСЃРєРёРµ РѕР±СЉРµРєС‚С‹ СѓРґР°Р»СЏСЋС‚СЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РїСЂРё РІС‹С…РѕРґРµ РёР· main" << endl;
+
     return 0;
 }
